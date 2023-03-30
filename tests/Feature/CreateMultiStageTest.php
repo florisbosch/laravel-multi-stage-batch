@@ -16,16 +16,20 @@ class CreateMultiStageTest extends TestCase
         $multiStage->addStage(
             stage: 'Stage 1',
             steps: [
-                fn() => Log::info('1'),
-                fn() => Log::info('2'),
-                fn() => Log::info('3'),
+                fn() => Log::info('Single function to execute on the queue'),
+                function() {
+                    $text = 'This is a function on the job';
+                }
             ]
         )->addStage(stage: 'Stage 2', steps: [
-            fn() => Log::info('XXX'),
+            new DataExport(),
+        ]);
+
+        $multiStage->addStage(stage: 'Stage 3', steps: [
+            DataExport::class,
         ]);
 
         $multiStage->dispatch();
-
 
         $this->assertEquals("Workflow 1", $multiStage->getName());
     }
