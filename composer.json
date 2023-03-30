@@ -1,0 +1,52 @@
+{
+    "name": "florisbosch/laravel-multi-stage-batch",
+    "description": "Package to create batches, which we can put in a stage stages in parallel on the queue.",
+    "keywords": [
+        "laravel",
+        "multi-stage",
+        "batch"
+    ],
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Floris Bosch"
+        }
+    ],
+    "require": {
+        "php": "^8.0.2 || ^8.1",
+        "illuminate/support": "^8 || ^9",
+        "illuminate/bus": "^8 || ^9"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0 || ^7.0",
+        "phpunit/phpunit": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Florisbosch\\MultiStageBatch\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Florisbosch\\MultiStageBatch\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Florisbosch\\MultiStageBatch\\MultiStageBatchServiceProvider"
+            ],
+            "aliases": {
+                "MultiStageBatch": "Florisbosch\\MultiStageBatch\\MultiStageBatchFacade"
+            }
+        }
+    }
+}
