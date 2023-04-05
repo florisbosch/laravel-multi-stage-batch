@@ -18,8 +18,8 @@ composer require florisbosch/laravel-multi-stage-batch
 To use the package, you need to create an instance of the MultiStageBatch class and add your stages with their respective jobs. You can then call the dispatch method to start the execution of the batch.
 
 ```php
-    use Florisbosch\MultiStageBatch\Batch\MultiStageBatch;
-    use Florisbosch\MultiStageBatch\Batch\Stage;
+    use Florisbosch\MultiStageBatch\MultiStageBatch;
+    use Florisbosch\MultiStageBatch\Stage;
 
     $multiStage = new MultiStageBatch("Workflow 1");
 
